@@ -56,5 +56,8 @@
 
         # Articles
         rails console
-        
+
         > reload
+        article.errors.any?
+
+        article.errors.full_messages
