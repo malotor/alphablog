@@ -1,5 +1,13 @@
 <h1>Create an Article</h1>
 
+<% if @article.errors.any? %>
+    <h2>Error</h2>
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+        </li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
 <!-- http://guides.rubyonrails.org/form_helpers.html  -->
 
 <%= form_for @article do |f| %>
