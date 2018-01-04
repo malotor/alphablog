@@ -37,6 +37,9 @@
 
         heroku rename alpha-blog
 
+        heroku run rake db:migrate
+        heroku run rails db:migrate
+
 
         # Scaffold
 
@@ -54,6 +57,7 @@
         rails db:rollback
 
 
+
         # Articles
         rails console
 
@@ -61,3 +65,8 @@
         article.errors.any?
 
         article.errors.full_messages
+
+
+        # Bootstrap
+
+        https://github.com/twbs/bootstrap-rubygem
