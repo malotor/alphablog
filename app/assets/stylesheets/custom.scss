@@ -1,2 +1,20 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+$navbar-default-bg: black;
+$link-color:                red !default;
+
 @import "bootstrap";
+
+#logo {
+    color: red;
+}
+.center {
+    text-align: center;
+}
+.jumbotron {
+    background-image: asset-url('jumbotron.jpg');
+    background-size: cover;
+    height: 550px;
+    h1 {
+        color: $white;
+    }
+}
