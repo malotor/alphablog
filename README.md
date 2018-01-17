@@ -45,7 +45,7 @@
 
         rails generate scaffold Article title:string description:text
 
-        rake db:migrate
+        rails db:migrate
 
 
         # Rails generate migration
