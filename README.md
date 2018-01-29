@@ -70,3 +70,8 @@
         # Bootstrap
 
         https://github.com/twbs/bootstrap-rubygem
+
+
+        # Debug
+        
+        debugger
