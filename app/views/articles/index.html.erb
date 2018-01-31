@@ -5,7 +5,9 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
+            <th>User</th>
             <th></th>
+           <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -16,6 +18,9 @@
         <tr>
             <td><%= link_to a.title, article_path(a)  %></td>
             <td><%= truncate a.description , length: 20 %></td>
+            <td><%= a.user.username if a.user %></td>
+            <td><%= time_ago_in_words a.created_at %></td>
+            <td><%= time_ago_in_words a.updated_at %></td>
             <td><%= link_to "Edit" , edit_article_path(a) %></td>
             <td><%= link_to "Show" , article_path(a) %></td>
             <td><%= link_to "Delete" , article_path(a) , method: :delete, data: { confirm: "Are you sure?"} %></td>
