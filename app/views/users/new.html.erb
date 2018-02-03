@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @user %>
+<!-- http://guides.rubyonrails.org/form_helpers.html  -->
+
+<%= form_for @user do |u| %>
+  <p>
+    <%= u.label :username %> <br>
+    <%= u.text_field :username %>
+  </p>
+  <p>
+    <%= u.label :email %> <br>
+    <%= u.email_field :email %>
+  </p>
+  <p>
+    <%= u.label :password %> <br>
+    <%= u.password_field :password, placeholder: 'Enter a new password' %>
+  </p>
+  <p>
+    <%= u.submit 'Sign up', class: 'btn btn-primary btn-large'%>
+  </p>
+<% end %>
+</article>
+<p><%= link_to "Back to Articles listing" , articles_path  %></p>
