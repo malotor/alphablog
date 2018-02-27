@@ -1,5 +1,12 @@
 # Ruby On Rail Blog Example
 
+## docker
+
+      docker-compose exec rails db:migrate
+
+      # docker-compose run web rails new . --force --database=postgresql
+
+
         # Create new app
 
         rails new app_name
@@ -73,5 +80,5 @@
 
 
         # Debug
-        
+
         debugger
