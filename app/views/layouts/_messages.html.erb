@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
-    <ul>
-        <li><%= name + '->' + msg %></li>
-    </ul>
+    <div class="alert alert-<%= name %>" role="alert">
+      <%= msg %>
+    </div>
 <% end %>

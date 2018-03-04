@@ -1,18 +1,17 @@
 <%= render 'shared/errors', obj: @article %>
 <!-- http://guides.rubyonrails.org/form_helpers.html  -->
-
 <%= form_for @article do |f| %>
-    <p>
-        <%= f.label :title %> <br>
-        <%= f.text_field :title %>
-    </p>
-    <p>
-        <%= f.label :description %> <br>
-        <%= f.text_area :description %>
-    </p>
-    <p>
-        <%= f.submit class: 'btn btn-primary btn-large'%>
-    </p>
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1"><%= f.label :title %> </label>
+        <%= f.text_field :title, class: 'form-control' %>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1"><%= f.label :description %></label>
+        <%= f.text_area :description, class: 'form-control' %>
+    </fieldset>
+
+    <%= f.submit class: 'btn btn-primary btn-large'%>
+
 <% end %>
 
 <p><%= link_to "Back to Articles listing" , articles_path  %></p>

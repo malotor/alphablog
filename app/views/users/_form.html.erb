@@ -1,22 +1,25 @@
 <%= render 'shared/errors', obj: @user %>
-<!-- http://guides.rubyonrails.org/form_helpers.html  -->
-
+<h1>Sign up</h1>
 <%= form_for @user do |u| %>
-  <p>
-    <%= u.label :username %> <br>
-    <%= u.text_field :username %>
-  </p>
-  <p>
-    <%= u.label :email %> <br>
-    <%= u.email_field :email %>
-  </p>
-  <p>
-    <%= u.label :password %> <br>
-    <%= u.password_field :password, placeholder: 'Enter a new password' %>
-  </p>
-  <p>
-    <%= u.submit @user.new_record? ? 'Sign up' : "Update your account" , class: 'btn btn-primary btn-large'%>
-  </p>
+
+  <fieldset class="form-group">
+    <label for="exampleInputEmail1"><%= u.label :username %></label>
+    <%= u.text_field :username, class: 'form-control' %>
+    <small class="text-muted">We'll never share your email with anyone else.</small>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleInputEmail1"><%= u.label :email %></label>
+    <%= u.email_field :email, class: 'form-control', placeholder: 'Enter email' %>
+    <small class="text-muted">We'll never share your email with anyone else.</small>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleInputPassword1"><%= u.label :password %></label>
+    <%= u.password_field :password, class: 'form-control', placeholder: 'Enter a new password' %>
+  </fieldset>
+
+<%= u.submit @user.new_record? ? 'Sign up' : "Update your account" , class: 'btn btn-primary btn-large'%>
+
+
 <% end %>
 
-<p><%= link_to "Back to Articles listing" , articles_path  %></p>
+<%= link_to "Back to Articles listing" , articles_path , class: 'btn btn-outline-primary' %>
