@@ -1,15 +1,12 @@
 <h1>Log In</h1>
-
 <%= form_for :session ,:html => { class: "form-horizontal", role: "form" }, url: login_path do |u| %>
-  <p>
-    <%= u.label :email %> <br>
-    <%= u.email_field :email %>
-  </p>
-  <p>
-    <%= u.label :password %> <br>
-    <%= u.password_field :password, placeholder: 'Enter a new password', autocomplete: "off" %>
-  </p>
-  <p>
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1"><%= u.label :email %></label>
+        <%= u.email_field :email, class: 'form-control' %>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1"><%= u.label :password %></label>
+        <%= u.password_field :password, class: 'form-control', placeholder: 'Enter a new password', autocomplete: "off" %>
+    </fieldset>
     <%= u.submit  'Log in' , class: 'btn btn-primary btn-large'%>
-  </p>
 <% end %>
