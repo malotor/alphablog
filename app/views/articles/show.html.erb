@@ -18,6 +18,8 @@
 
 <% end %>
 
-<p><%= link_to "Edit this article" , edit_article_path(@article)  %></p>
+<% if logged_in? && current_user == @article.user %>
+    <p><%= link_to "Edit this article" , edit_article_path(@article)  %></p>
+<% end %>
 
 <p><%= link_to "Back to Articles listing" , articles_path  %></p>
