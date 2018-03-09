@@ -1,11 +1,6 @@
 <h1>List all articles</h1>
-<%= link_to "Create new article", new_article_path %>
-<div class="center">
-  <%= will_paginate :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
-</div>
+
 <%= render 'article', obj: @articles %>
 <div class="center">
   <%= will_paginate :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
 </div>
-
-

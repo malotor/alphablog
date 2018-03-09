@@ -23,18 +23,25 @@
               Actions
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'New article', new_article_path , class: "dropdown-item" %>
+                <%= link_to 'New article', new_article_path , class: "dropdown-item" %>
               <!--<a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>-->
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Your profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Edit your profile', edit_user_path(current_user) , class: "dropdown-item" %>
+                <%= link_to 'My Home', users_path(current_user) , class: 'dropdown-item' %>
+            </div>
+          </li>
           <li class="nav-item">
             <%= link_to 'Logout', login_path, method: :delete , class: 'nav-link' %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'My Home', users_path(id: session[:user_id]) , method: :get, class: 'nav-link' %>
-          </li>
+
       <% else %>
           <li class="nav-item">
             <%= link_to 'Sign In', login_path , class: 'nav-link' %>
