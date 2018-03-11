@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
     def create
         #render plain: params[:article].inspect
-        #debuggergit 
+        #debuggergit
         @article = Article.new(article_params)
         @article.user = current_user
 
@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
 
         def require_same_user
 
-          if current_user != @article.user
+          if current_user != @article.user and !current_user.admin?
               flash[:danger] = "You can only edit your own article"
               redirect_to root_path
           end

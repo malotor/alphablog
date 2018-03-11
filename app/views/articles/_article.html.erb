@@ -9,7 +9,7 @@
         <small>(<%= a.user.username if a.user %>) on <%= time_ago_in_words a.created_at %></small>
         <small>Last update: <%= time_ago_in_words a.updated_at %></small>
       </p>
-      <% if logged_in? && current_user == a.user %>
+      <% if logged_in? && ( current_user == a.user  || current_user.admin? )%>
           <%= link_to "Edit" , edit_article_path(a), class: 'btn btn-primary btn-sm' %>
           <%= link_to "Show" , article_path(a), class: 'btn btn-primary btn-sm' %>
           <%= link_to "Delete" , article_path(a) , class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: "Are you sure?"} %></td>

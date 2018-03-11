@@ -82,3 +82,8 @@
         # Debug
 
         debugger
+
+        # Rails console
+
+        user.toogle(:admin)
+        user.admin?
