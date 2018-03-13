@@ -5,7 +5,7 @@
       docker-compose exec rails db:migrate
 
       # docker-compose run web rails new . --force --database=postgresql
-
+        rails new . -T #Skip test framework
 
         # Create new app
 
