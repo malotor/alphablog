@@ -2,10 +2,15 @@
 
 ## docker
 
-      docker-compose exec rails db:migrate
 
       # docker-compose run web rails new . --force --database=postgresql
-        rails new . -T #Skip test framework
+      docker-composer exex  rails new . -T #Skip test framework
+      docker-compose run web rails new . --force --database=postgresql
+      docker-compose up -d web
+      docker-compose exec web rails db:migrate
+      docker-compose exec web rails generate rspec:install
+
+## Documentation
 
         # Create new app
 
@@ -84,6 +89,4 @@
         debugger
 
         # Rails console
-
-        user.toogle(:admin)
         user.admin?
