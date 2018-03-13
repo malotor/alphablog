@@ -2,10 +2,12 @@
 
 ## docker
 
-      docker-compose exec rails db:migrate
-
-      # docker-compose run web rails new . --force --database=postgresql
-
+      docker-compose run web rails new . --force --database=postgresql
+      docker-compose up -d web
+      docker-compose exec web rails db:migrate
+      docker-compose exec web rails rspec:Install
+      
+## Documentation
 
         # Create new app
 
