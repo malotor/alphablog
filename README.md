@@ -90,3 +90,7 @@
 
         # Rails console
         user.admin?
+
+        # Test
+
+        rails test
