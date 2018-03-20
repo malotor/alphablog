@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'login', to: 'sessions#destroy'
 
+
+  resources :categories, except: [:destroy]
   #Invitations
   resources :invitations, except: [:edit,:show,:update]
-
 end
