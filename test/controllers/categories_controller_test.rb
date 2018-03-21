@@ -1,29 +1,24 @@
 require 'test_helper'
 
-class CreateCategoriesTest < ActionDispatch::IntegrationTest
+class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
-    test "get new category form and create category" do
+  def setup
+    @category = Category.create(name: "sports")
+  end
 
-        get new_category_path
+  test "should get categories index" do
+    get categories_path
+    assert_response :success
+  end
 
-        assert_template 'categories/new'
+  test "should get new" do
+    get new_category_path
+    assert_response :success
+  end
 
-        assert_difference 'Category.count', 1 do
-
-            #post_via_redirect categories_path, category: {name: "sports"}
-
-            # if using Rails 5 use below 2 lines instead of line above (without the comment tag of course):
-
-            post categories_path, params: { category: { name: "sports" } }
-
-            follow_redirect!
-
-        end
-
-        assert_template 'categories/index'
-
-        assert_match "sports", response.body
-
-    end
+  test "should get show" do
+    get category_path(@category)
+    assert_response :success
+  end
 
 end
