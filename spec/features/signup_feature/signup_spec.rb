@@ -20,7 +20,7 @@ RSpec.feature "Signup" do
 
   end
 
-  scenario "A user signup with valid invitation" do
+  scenario "A user signup with valid invitation is allowed to signup" do
 
     invitation = Invitation.create(email_recipient: "test@test.com")
 
@@ -29,5 +29,38 @@ RSpec.feature "Signup" do
     expect(page.current_path).to eq(signup_path)
 
   end
+
+  scenario "A user signup with valid invitation signup" do
+
+    invitation = Invitation.create(email_recipient: "test@test.com")
+
+    visit "/signup?token=#{invitation.token.to_s}"
+
+    fill_in "Username", with: "test"
+    fill_in "Email", with: "test@test.com"
+    fill_in "Password", with: "1234"
+    click_button "Sign up"
+
+    expect(page).to have_content("Welcome to test page")
+
+  end
+
+  scenario "A user signup with valid invitation signup but diferent email" do
+
+    invitation = Invitation.create(email_recipient: "test@test.com")
+
+    visit "/signup?token=#{invitation.token.to_s}"
+
+    fill_in "Username", with: "test"
+    fill_in "Email", with: "other@test.com"
+    fill_in "Password", with: "1234"
+
+    click_button "Sign up"
+
+    expect(page).to have_content("You have filled in different email that invitation was sended")
+    expect(page.current_path).to eq("/signup?token=#{invitation.token.to_s}")
+
+  end
+
 
 end

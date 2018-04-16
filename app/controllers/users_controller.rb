@@ -12,13 +12,41 @@ class UsersController < ApplicationController
 
   def new
 
-    require_token
+    if !params.has_key?(:token)
+      flash[:danger] = "You haven`t provide a token invitation"
+      redirect_to root_path
+    else
+      @invitation = Invitation.find_by token: params[:token]
+
+      if !@invitation
+        flash[:danger] = "You haven`t provide a valid token invitation"
+        redirect_to root_path
+      end
+
+    end
 
     @user = User.new
+    @user.invitation = @invitation
 
   end
 
   def create
+
+    if !params.has_key?(:token)
+      flash[:danger] = "You haven`t provide a token invitation"
+      redirect_to root_path
+    else
+      @invitation = Invitation.find_by token: params[:token]
+
+      if !@invitation
+        flash[:danger] = "You haven`t provide a valid token invitation"
+        redirect_to root_path
+      elsif  @invitation.email_recipient != params[:email]
+        flash[:danger] = "You have filled in different email that invitation was sended"
+        redirect_to root_path
+      end
+    end
+
     @user  = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
@@ -76,17 +104,5 @@ class UsersController < ApplicationController
       end
   end
 
-def require_token
-  if !params.has_key?(:token)
-    flash[:danger] = "You haven`t provide a token invitation"
-    redirect_to root_path
-  else
-    invitation = Invitation.find_by token: params[:token]
-    if !invitation
-      flash[:danger] = "You haven`t provide a valid token invitation"
-      redirect_to root_path
-    end
-  end
-end
 
 end
