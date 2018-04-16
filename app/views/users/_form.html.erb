@@ -16,7 +16,7 @@
     <label for="exampleInputPassword1"><%= u.label :password %></label>
     <%= u.password_field :password, class: 'form-control', placeholder: 'Enter a new password' %>
   </fieldset>
-  <input type="hidden" name="token" value="<%= @user.invitation.token %>" />
+  <input type="hidden" name="token" value="<%= @invitation.token %>" />
 <%= u.submit @user.new_record? ? 'Sign up' : "Update your account" , class: 'btn btn-primary btn-large'%>
 
 

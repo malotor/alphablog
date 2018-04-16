@@ -12,6 +12,7 @@
       <% @invitations.each do |invitation| %>
         <tr>
           <td><%= invitation.email_recipient %></td>
+          <td><small><%= invitation.token %></small></td>
           <td><%= invitation.accepted %></td>
           <td><%= invitation.created_at %></td>
           <td>

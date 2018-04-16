@@ -18,10 +18,9 @@ class InvitationsController < ApplicationController
     if @invitation.save
       redirect_to @invitation, notice: 'Invitation was successfully created.'
     else
-      render :new
+      redirect_to invitations_path
     end
   end
-
 
   # DELETE /invitations/1
   def destroy
@@ -30,13 +29,14 @@ class InvitationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invitation
-      @invitation = Invitation.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def invitation_params
-      params.require(:invitation).permit(:email_recipient)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invitation
+    @invitation = Invitation.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def invitation_params
+    params.require(:invitation).permit(:email_recipient)
+  end
 end
