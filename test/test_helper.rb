@@ -1,4 +1,4 @@
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
@@ -6,8 +6,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-end
-
-def sign_in_as(user, password)
+  def sign_in_as(user, password)
     post login_path, params: { session: { email: user.email, password: password } }
+  end
 end
