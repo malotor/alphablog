@@ -1,7 +1,6 @@
 class Invitation < ApplicationRecord
 
   #attr_accessor :token
-  belongs_to :user
 
   before_save { self.email_recipient  = email_recipient.downcase }
 

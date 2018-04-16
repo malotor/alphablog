@@ -15,18 +15,22 @@ class UsersController < ApplicationController
     if !params.has_key?(:token)
       flash[:danger] = "You haven`t provide a token invitation"
       redirect_to root_path
+      return
     else
       @invitation = Invitation.find_by token: params[:token]
 
       if !@invitation
         flash[:danger] = "You haven`t provide a valid token invitation"
         redirect_to root_path
+        return
+      else
+        @user = User.new
+        @user.invitation = @invitation
       end
 
     end
 
-    @user = User.new
-    @user.invitation = @invitation
+
 
   end
 
@@ -35,26 +39,35 @@ class UsersController < ApplicationController
     if !params.has_key?(:token)
       flash[:danger] = "You haven`t provide a token invitation"
       redirect_to root_path
+      return
     else
       @invitation = Invitation.find_by token: params[:token]
 
       if !@invitation
         flash[:danger] = "You haven`t provide a valid token invitation"
         redirect_to root_path
+        return
       elsif  @invitation.email_recipient != params[:email]
         flash[:danger] = "You have filled in different email that invitation was sended"
         redirect_to root_path
+        return
+      else
+        @user  = User.new(user_params)
+        @user.invitation = @invitation
+        if @user.save
+          session[:user_id] = @user.id
+          flash[:success] = "Welcome to alpha blog #{@user.username}"
+          redirect_to user_path(@user)
+          return
+
+        else
+          render 'new'
+        end
       end
     end
 
-    @user  = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:success] = "Welcome to alpha blog #{@user.username}"
-      redirect_to user_path(@user)
-    else
-      render 'new'
-    end
+
+
   end
 
   def edit
