@@ -21,7 +21,7 @@
 ## Documentation Tips
 
     # docker-compose run web rails new . --force --database=postgresql
-    docker-composer exex  rails new . -T #Skip test framework
+    docker-compose exec  rails new . -T #Skip test framework
     docker-compose run web rails new . --force --database=postgresql
     docker-compose up -d web
     docker-compose exec web rails db:migrate

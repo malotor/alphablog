@@ -11,26 +11,9 @@ class UsersController < ApplicationController
 
 
   def new
-
-    if !params.has_key?(:token)
-      flash[:danger] = "You haven`t provide a token invitation"
-      redirect_to root_path
-      return
-    else
-      @invitation = Invitation.find_by token: params[:token]
-
-      if !@invitation
-        flash[:danger] = "You haven`t provide a valid token invitation"
-        redirect_to root_path
-        return
-      else
-        @user = User.new
-        @user.invitation = @invitation
-      end
-
-    end
-
-
+    
+    token_params
+    @user = User.new
 
   end
 
@@ -97,6 +80,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def token_params
+    params.require(:token)
   end
 
   def set_user

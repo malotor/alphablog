@@ -1,22 +1,14 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:show, :edit, :update, :destroy]
+  before_action :set_invitation, only: [:destroy]
 
   # GET /invitations
   def index
     @invitations = Invitation.all
   end
 
-  # GET /invitations/1
-  def show
-  end
-
   # GET /invitations/new
   def new
     @invitation = Invitation.new
-  end
-
-  # GET /invitations/1/edit
-  def edit
   end
 
   # POST /invitations
@@ -30,14 +22,6 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /invitations/1
-  def update
-    if @invitation.update(invitation_params)
-      redirect_to @invitation, notice: 'Invitation was successfully updated.'
-    else
-      render :edit
-    end
-  end
 
   # DELETE /invitations/1
   def destroy
@@ -53,6 +37,6 @@ class InvitationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def invitation_params
-      params.fetch(:invitation, {})
+      params.require(:invitation).permit(:email_recipient)
     end
 end

@@ -1,17 +1,12 @@
-<%= form_with(model: invitation, local: true) do |form| %>
-  <% if invitation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+<%= render 'shared/errors', obj: @invitation %>
+<!-- http://guides.rubyonrails.org/form_helpers.html  -->
+<%= form_for @invitation do |i| %>
+    <fieldset class="form-group">
+        <label for="email"><%= i.label :email_recipient %> </label>
+        <%= i.email_field :email_recipient, class: 'form-control' %>
+    </fieldset>
 
-      <ul>
-      <% invitation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    
+    <%= i.submit class: 'btn btn-primary btn-large'%>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
