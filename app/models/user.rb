@@ -2,7 +2,6 @@ class User < ApplicationRecord
     attr_accessor :invitation
     # destroy all articles when user is destroyed
     has_many :articles, dependent: :destroy
-    has_one :invitation
 
     before_save { self.email  = email.downcase }
 
