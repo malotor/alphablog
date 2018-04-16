@@ -1,96 +1,108 @@
 # Ruby On Rail Blog Example
 
+## Install
+
+      docker-compose build
+      docker-compose up -d web
+      docker-compose exec web rails db:migrate
+      docker-compose exec web rails db:migrate RAILS_ENV=test
+
+      docker-compose exec web rails test
+## web
+
+      http://localhost:3000
+
 ## docker
 
 
-      # docker-compose run web rails new . --force --database=postgresql
-      docker-composer exex  rails new . -T #Skip test framework
-      docker-compose run web rails new . --force --database=postgresql
-      docker-compose up -d web
-      docker-compose exec web rails db:migrate
-      docker-compose exec web rails generate rspec:install
+## Documentation Tips
 
-## Documentation
+    # docker-compose run web rails new . --force --database=postgresql
+    docker-composer exex  rails new . -T #Skip test framework
+    docker-compose run web rails new . --force --database=postgresql
+    docker-compose up -d web
+    docker-compose exec web rails db:migrate
+    docker-compose exec web rails generate rspec:install
 
-        # Create new app
+    # Create new app
 
-        rails new app_name
+    rails new app_name
 
-        # Run the server
+    # Run the server
 
-        rails server -b 0.0.0.0
+    rails server -b 0.0.0.0
 
-        # Check routes
+    # Check routes
 
-        rails routes
-
-
-        # Update bundle
-
-        gem install bundler
-
-        # Install Gems
-
-        bundle install --without production
+    rails routes
 
 
+    # Update bundle
 
-        # Heroku
+    gem install bundler
 
-        heroku --version
+    # Install Gems
 
-        heroku login
-
-        heroku create
-
-        heroky keys:add
-
-        git push heroku master
-
-        heroku rename alpha-blog
-
-        heroku run rake db:migrate
-        heroku run rails db:migrate
-
-
-        # Scaffold
-
-        rails generate scaffold Article title:string description:text
-
-        rails db:migrate
-
-
-        # Rails generate migration
-
-        rails generate migration create_articles
-
-        rake db:migrate
-        rails db:migrate
-        rails db:rollback
+    bundle install --without production
 
 
 
-        # Articles
-        rails console
+    # Heroku
 
-        > reload
-        article.errors.any?
+    heroku --version
 
-        article.errors.full_messages
+    heroku login
+
+    heroku create
+
+    heroky keys:add
+
+    git push heroku master
+
+    heroku rename alpha-blog
+
+    heroku run rake db:migrate
+    heroku run rails db:migrate
 
 
-        # Bootstrap
+    # Scaffold
 
-        https://github.com/twbs/bootstrap-rubygem
+    rails generate scaffold Article title:string description:text
+
+    rails db:migrate
 
 
-        # Debug
+    # Rails generate migration
 
-        debugger
+    rails generate migration create_articles
 
-        # Rails console
-        user.admin?
+    rake db:migrate
+    rails db:migrate
+    rails db:rollback
 
-        # Test
 
-        rails test
+
+    # Articles
+    rails console
+
+    > reload
+    article.errors.any?
+
+    article.errors.full_messages
+
+
+    # Bootstrap
+
+    https://github.com/twbs/bootstrap-rubygem
+
+
+    # Debug
+
+    debugger
+
+    # Rails console
+    user.admin?
+
+    # Test
+
+    rails test
