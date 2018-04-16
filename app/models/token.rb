@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Token
   def initialize(value)
     @value = value
@@ -8,7 +10,7 @@ class Token
   end
 
   def self.generate
-    return 'atoken'
+    return Token.new SecureRandom.uuid
   end
 
 end

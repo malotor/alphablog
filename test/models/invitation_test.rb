@@ -32,9 +32,25 @@ class InvitationTest < ActiveSupport::TestCase
     end
 
     test "inivitations have a token" do
-        assert_instance_of Token, @invitation.token
+        assert_not_nil @invitation.token
     end
 
+    test "invitations tokens are diferent" do
 
+        @invitation.save
+
+        invitation = Invitation.new(email_recipient: "test2@test.com")
+
+        assert_not invitation.token == @invitation.token
+
+    end
+
+    test "invitations always have same token" do
+        @invitation.save
+
+        invitation_recovered = Invitation.find @invitation.id
+
+        assert invitation_recovered.token == @invitation.token
+    end
 
 end

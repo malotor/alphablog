@@ -8,6 +8,9 @@
       docker-compose exec web rails db:migrate RAILS_ENV=test
 
       docker-compose exec web rails test
+
+
+      docker-compose exec web rspec spec/features/
 ## web
 
       http://localhost:3000
@@ -68,6 +71,7 @@
     # Scaffold
 
     rails generate scaffold Article title:string description:text
+    rails generate scaffold Article --skip --no-helper --no-assets --no-controller-specs --no-view-specs
 
     rails db:migrate
 

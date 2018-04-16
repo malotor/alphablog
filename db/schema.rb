@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20180416093818) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.string "email_recipient"
-    t.string "token"
-    t.boolean "accepted"
+    t.string "email_recipient", null: false
+    t.string "token", null: false
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
