@@ -7,3 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: 'malotor', email: 'malotor@gmail.com', admin: true, password: 'test')
+User.create(username: 'tester', email: 'tester@test.com', admin: false, password: 'test')
+
+Category.create(name: 'Sports')
+Category.create(name: 'Food')
+Category.create(name: 'Programming')
+Category.create(name: 'Travel')
