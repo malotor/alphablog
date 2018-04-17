@@ -5,52 +5,57 @@
       docker-compose build
       docker-compose up -d web
       docker-compose exec web rails db:migrate
+      docker-compose exec web rails db:seed
       docker-compose exec web rails db:migrate RAILS_ENV=test
 
       docker-compose exec web rails test
-
-
       docker-compose exec web rspec spec/features/
+
 ## web
 
       http://localhost:3000
 
-## docker
-
-
 ## Documentation Tips
 
-    # docker-compose run web rails new . --force --database=postgresql
-    docker-compose exec  rails new . -T #Skip test framework
-    docker-compose run web rails new . --force --database=postgresql
-    docker-compose up -d web
-    docker-compose exec web rails db:migrate
-    docker-compose exec web rails generate rspec:install
-
     # Create new app
-
     rails new app_name
 
-    # Run the server
+    # Create new rails app with postgres
+    rails new . --force --database=postgresql
 
+    # Create new rails app without test framework
+    rails new . -T
+
+    rails new . --force --database=postgresql
+
+    # Init rspec
+    rails generate rspec:install
+
+    # Run the server
     rails server -b 0.0.0.0
 
     # Check routes
-
     rails routes
 
 
     # Update bundle
-
     gem install bundler
 
-    # Install Gems
-
+    # Install Gems without production gems
     bundle install --without production
 
+    # Scaffold
+    rails generate scaffold Article title:string description:text
+    rails generate scaffold Article --skip --no-helper --no-assets --no-controller-specs --no-view-specs
 
+    # Rails generate migration
+    rails generate migration create_articles
 
-    # Heroku
+## Bootstrap 4
+
+    https://github.com/twbs/bootstrap-rubygem
+
+## Heroku
 
     heroku --version
 
@@ -66,47 +71,3 @@
 
     heroku run rake db:migrate
     heroku run rails db:migrate
-
-
-    # Scaffold
-
-    rails generate scaffold Article title:string description:text
-    rails generate scaffold Article --skip --no-helper --no-assets --no-controller-specs --no-view-specs
-
-    rails db:migrate
-
-
-    # Rails generate migration
-
-    rails generate migration create_articles
-
-    rake db:migrate
-    rails db:migrate
-    rails db:rollback
-
-
-
-    # Articles
-    rails console
-
-    > reload
-    article.errors.any?
-
-    article.errors.full_messages
-
-
-    # Bootstrap
-
-    https://github.com/twbs/bootstrap-rubygem
-
-
-    # Debug
-
-    debugger
-
-    # Rails console
-    user.admin?
-
-    # Test
-
-    rails test
