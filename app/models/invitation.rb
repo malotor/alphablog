@@ -1,7 +1,6 @@
 class Invitation < ApplicationRecord
 
-  #attr_accessor :token
-  belongs_to :user
+  has_one :user
 
   before_save { self.email_recipient  = email_recipient.downcase }
 
@@ -14,15 +13,10 @@ class Invitation < ApplicationRecord
     super attributes
   end
 
-  # after_initialize do |invitation|
-  #   puts "init"
-  #   invitation.token ||= Token.generate
-  # end
-  #
-  # after_create do |invitation|
-  #     puts "create"
-  #   invitation.token ||= Token.generate
-  # end
 
+  # def accepted_by(user)
+  #   @user = user
+  #   @accepted = true
+  # end
 
 end

@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20180416155847) do
     t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180416155847) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin"
+    t.integer "invitation_id"
   end
 
 end
