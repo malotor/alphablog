@@ -8,6 +8,7 @@
       docker-compose run web rails new . --force --database=postgresql
       docker-compose up -d web
       docker-compose exec web rails db:migrate
+      docker-compose exec web rails db:migrate RAILS_ENV=test
       docker-compose exec web rails generate rspec:install
 
 ## Documentation

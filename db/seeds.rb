@@ -9,6 +9,8 @@
 User.create(username: 'malotor', email: 'malotor@gmail.com', admin: true, password: 'test')
 User.create(username: 'tester', email: 'tester@test.com', admin: false, password: 'test')
 
+Article.create(title: "An article title", description: "An article description", user: User.first)
+
 Category.create(name: 'Sports')
 Category.create(name: 'Food')
 Category.create(name: 'Programming')
