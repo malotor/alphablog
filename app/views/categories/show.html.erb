@@ -1,0 +1,6 @@
+<h1>Articles from "<%= @category.name %>"</h1>
+
+<%= render 'articles/article', obj:  @category_articles %>
+<div class="center">
+  <%= will_paginate @category_articles, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+</div>

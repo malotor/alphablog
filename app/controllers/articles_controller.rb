@@ -1,3 +1,4 @@
+# Language: Ruby, Level: Level 3
 class ArticlesController < ApplicationController
 
     before_action :set_article, only: [:edit,:update,:show, :destroy]
@@ -18,8 +19,8 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        #render plain: params[:article].inspect
-        #debuggergit
+
+
         @article = Article.new(article_params)
         @article.user = current_user
 
@@ -61,7 +62,8 @@ class ArticlesController < ApplicationController
             @article = Article.find(params[:id])
         end
         def article_params
-            params.require(:article).permit(:title,:description)
+            #params.require(:article).permit(:title,:description,category_ids: [])
+            params.require(:article).permit!
         end
 
         def require_same_user

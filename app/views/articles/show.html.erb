@@ -1,12 +1,14 @@
 <h1><%= @article.title %></h1>
 <div><%= @article.description %></div>
-
+<% if @article.categories.any? %>
+  <p><%= render @article.categories %>
+<% end %>
 <% if @article.user %>
  <hr>
   <ul class="listing">
     <duv class="row">
 
-      <div class="well col-md-4 col-md-offset-4">
+      <div class="well col-md-12">
         <li><%= link_to gravatar_for(@article.user, { size: 30 }), user_path(@article.user) %></li>
         <li class="article-title">
           <%= link_to @article.user.username, users_path(@article.user) %>
